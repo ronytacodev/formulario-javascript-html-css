@@ -1,0 +1,136 @@
+/*---------------- ESTILOS BASE-------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #222;
+    color: #FFF;
+}
+
+/*---------------- ESTILOS MAIN-------------------- */
+main {
+    width: 90%;
+    max-width: 800px;
+    margin: 25px auto;
+    padding: 10px 40px;
+    border: 2px solid #035F22;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px #035F22;
+}
+
+/*---------------- ESTILOS FORMULARIO-------------------- */
+.formulario {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 45px;
+}
+
+.formulario__label {
+    display: block;
+    padding: 10px 0;
+}
+
+.formulario__grupo-input {
+    position: relative;
+}
+
+.formulario__input {
+    width: 90%;
+    background: transparent;
+    border-bottom: 2px solid #035F22;
+    border-right: none;
+    color: #FFF;
+    font-size: 17px;
+    outline: none;
+    line-height: 45px;
+    padding: 0 10px;
+    transition: all 1s;
+}
+
+.formulario__input:focus {
+    box-shadow: 0 0 5px #035F22;
+}
+
+.formulario__validacion-estado {
+    position: absolute;
+    right: 45px;
+    bottom: 15px;
+    font-size: 16px;
+    opacity: 0;
+    z-index: 1000;
+}
+
+.formulario__input-error {
+    margin-bottom: 0;
+    display: none;
+}
+
+.formulario__span {
+    font-size: 1.1em;
+    font-weight: 100;
+}
+
+.formulario__checkbox {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 10px;
+}
+
+.formulario__grupo-terminos {
+    text-align: center;
+}
+
+.formulario__grupo-terminos,
+.formulario__mensaje,
+.formulario__grupo-btn-enviar {
+    grid-column: span 2;
+}
+
+.formulario__mensaje {
+    display: none;
+    padding: 15px;
+    text-align: center;
+    background: #F00;
+    border-radius: 10px;
+}
+
+.formulario__mensaje-activo,
+.formulario__mensaje-exito-activo,
+.formulario__input-error-activo {
+    display: block;
+}
+
+.formulario__grupo-btn-enviar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formulario__btn {
+    padding: 15px 35px;
+    background: #000;
+    color: #FFF;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.formulario__btn:hover {
+    background: #035f22;
+    transition: background 1s;
+}
+
+.formulario__mensaje-exito {
+    display: none;
+    font-style: 2em;
+    color: #035F22;
+    padding: 10px 0;
+    text-align: center;
+}
+
+/*---------------- ESTILOS VALIDACIONES-------------------- */
+/* me quede en el min 37:57 */
