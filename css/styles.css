@@ -133,4 +133,39 @@ main {
 }
 
 /*---------------- ESTILOS VALIDACIONES-------------------- */
-/* me quede en el min 37:57 */
+
+.formulario__grupo-correcto .formulario__validacion-estado {
+    columns: #035F22;
+    opacity: 1;
+}
+
+.formulario__grupo-incorrecto .formulario__label {
+    color: #F00;
+}
+
+.formulario__grupo-incorrecto .formulario__validacion-estado {
+    color: #F00;
+    opacity: 1;
+}
+
+.formulario__grupo-incorrecto .formulario__input {
+    border: 1px solid #F00;
+}
+
+/*---------------- ESTILOS RESPONSIVE-------------------- */
+
+@media screen and (max-width: 720px) {
+    .formulario {
+        grid-template-columns: 1fr;
+    }
+
+    .formulario__grupo-terminos,
+    .formulario__mensaje,
+    .formulario__grupo-btn-enviar {
+        grid-column: 1;
+    }
+
+    .formulario {
+        width: 100%;
+    }
+}
