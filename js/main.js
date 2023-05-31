@@ -42,43 +42,45 @@ const validarFormulario = (e) => {
 }
 
 const validarCampo = (expresiones, input, campo) => {
-    if (expresiones.test(input.value)) {
+    if (expresiones.test(input.value)) { //si esta bien rellenado el campo del form
         document.getElementById(`grupo__${campo}`).classList.remove("formulario__grupo-incorrecto");
         document.getElementById(`grupo__${campo}`).classList.add("formulario__grupo-correcto");
-        document.getElementById(`#grupo__${campo} i`).classList.remove("fa-times-circle");
-        document.getElementById(`#grupo__${campo} i`).classList.add("fa-regular fa-check");
-        document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.remove("formulario__input-error-activo");
+        document.getElementById(`#grupo__${campo} i`).classList.remove("bi bi-x-circle-fill");
+        document.getElementById(`#grupo__${campo} i`).classList.add("bi bi-check-circle-fill");
+        document.querySelector(`#grupo__${campo} p`).classList.remove("formulario__input-error-activo");
+        document.querySelector(`#grupo__${campo} p`).classList.add("formulario__input-error-oculto");
         campos[campo] = true;
-    } else {
+    } else { //si no se llenó correctamente los campos del form
         document.getElementById(`grupo__${campo}`).classList.add("formulario__grupo-incorrecto");
         document.getElementById(`grupo__${campo}`).classList.remove("formulario__grupo-correcto");
-        document.getElementById(`#grupo__${campo} i`).classList.add("fa-times-circle");
-        document.getElementById(`#grupo__${campo} i`).classList.remove("fa-regular fa-check");
-        document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.add("formulario__input-error-activo");
+        document.getElementById(`#grupo__${campo} i`).classList.add("bi bi-x-circle-fill");
+        document.getElementById(`#grupo__${campo} i`).classList.remove("bi bi-check-circle-fill");
+        document.querySelector(`#grupo__${campo} p`).classList.remove("formulario__input-error-oculto");
+        document.querySelector(`#grupo__${campo} p`).classList.add("formulario__input-error-activo");
         campos[campo] = false;
     }
 }
 
-const validarPassword2 = () => {
-    let inputPassword1 = document.getElementById("password");
-    let inputPassword2 = document.getElementById("password2");
+// const validarPassword2 = () => {
+//     let inputPassword1 = document.getElementById("password");
+//     let inputPassword2 = document.getElementById("password2");
 
-    if (inputPassword1.value !== inputPassword2.value) {
-        document.getElementById(`grupo__password2`).classList.add("formulario__grupo-incorrecto");
-        document.getElementById(`grupo__password2`).classList.remove("formulario__grupo-correcto");
-        document.getElementById(`#grupo__password2 i`).classList.add("fa-times-circle");
-        document.getElementById(`#grupo__password2 i`).classList.remove("fa-regular fa-check");
-        document.getElementById(`#grupo__password2 .formulario__input-error`).classList.add("formulario__input-error-activo");
-        campos[password] = false;
-    } else {
-        document.getElementById(`grupo__password2`).classList.remove("formulario__grupo-incorrecto");
-        document.getElementById(`grupo__password2`).classList.add("formulario__grupo-correcto");
-        document.getElementById(`#grupo__password2 i`).classList.remove("fa-times-circle");
-        document.getElementById(`#grupo__password2 i`).classList.add("fa-regular fa-check");
-        document.getElementById(`#grupo__password2 .formulario__input-error`).classList.remove("formulario__input-error-activo");
-        campos[password] = true;
-    }
-}
+//     if (inputPassword1.value !== inputPassword2.value) {
+//         document.getElementById(`grupo__password2`).classList.add("formulario__grupo-incorrecto");
+//         document.getElementById(`grupo__password2`).classList.remove("formulario__grupo-correcto");
+//         document.getElementById(`#grupo__password2 i`).classList.add("bi bi-x-circle-fill");
+//         document.getElementById(`#grupo__password2 i`).classList.remove("bi bi-check-circle-fill");
+//         document.getElementById(`#grupo__password2 .formulario__input-error-oculto`).classList.add("formulario__input-error-activo");
+//         campos[password] = false;
+//     } else {
+//         document.getElementById(`grupo__password2`).classList.remove("formulario__grupo-incorrecto");
+//         document.getElementById(`grupo__password2`).classList.add("formulario__grupo-correcto");
+//         document.getElementById(`#grupo__password2 i`).classList.remove("fbi bi-x-circle-fill");
+//         document.getElementById(`#grupo__password2 i`).classList.add("bi bi-check-circle-fill");
+//         document.getElementById(`#grupo__password2 .formulario__input-error-oculto`).classList.remove("formulario__input-error-activo");
+//         campos[password] = true;
+//     }
+// }
 
 $inputs.forEach((input) => {
     input.addEventListener("keyup", validarFormulario);
@@ -97,8 +99,8 @@ $formulario.addEventListener("submit", e => {
             document.getElementById("formulario__grupo-terminos").style.display = "none";
         }, 3000);
 
-        document.querySelectorAll("formulario__grupo--correcto").forEach((icono) => {
-            icono.classList.remove("formulario__grupo--correcto");
+        document.querySelectorAll("formulario__grupo-correcto").forEach((icono) => {
+            icono.classList.remove("formulario__grupo-correcto");
         });
 
         setTimeout(() => {

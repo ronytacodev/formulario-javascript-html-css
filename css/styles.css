@@ -54,7 +54,7 @@ main {
     box-shadow: 0 0 5px #035F22;
 }
 
-.formulario__input-error {
+.formulario__input-error-activo {
     position: absolute;
     right: 45px;
     bottom: 15px;
@@ -63,7 +63,7 @@ main {
     z-index: 1000;
 }
 
-.formulario__input-error-activo {
+.formulario__input-error-oculto {
     margin-bottom: 0;
     display: none;
 }
@@ -134,25 +134,21 @@ main {
 
 /*---------------- ESTILOS VALIDACIONES-------------------- */
 
-.formulario__grupo-correcto,
-.formulario__validacion-estado {
+.formulario__grupo-correcto .formulario__validacion-estado {
     columns: #035F22;
     opacity: 1;
 }
 
-.formulario__grupo-incorrecto,
-.formulario__label {
+.formulario__grupo-incorrecto .formulario__label {
     color: #F00;
 }
 
-.formulario__grupo-incorrecto,
-.formulario__validacion-estado {
+.formulario__grupo-incorrecto .formulario__validacion-estado {
     color: #F00;
     opacity: 1;
 }
 
-.formulario__grupo-incorrecto,
-.formulario__input {
+.formulario__grupo-incorrecto .formulario__input {
     border: 1px solid #F00;
 }
 
