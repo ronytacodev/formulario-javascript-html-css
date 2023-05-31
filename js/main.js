@@ -6,7 +6,7 @@ const expresiones = {
     nombre:  /^[a-zA-ZÁ-ÿ\s]{1,40}$/, //Aqui aceptara letras con o sin acento y espacios
     password : /^.{4,12}$/, //Solo aceptara un mínimo de 4 dígitos y un máximo de 12 dígitos
     correo : /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9_.]+$/, //Acepta de todo menos caracteres especiales
-    telefono : /^\d{7,14}$/ //Aceptara mínimo 7 y máximo 14 números
+    telefono : /^\d{9}$/ //Aceptara solo 9 números por ser de Perú 01 311 1111
 }
 
 const campos = {
@@ -46,15 +46,15 @@ const validarCampo = (expresiones, input, campo) => {
         document.getElementById(`grupo__${campo}`).classList.remove("formulario__grupo-incorrecto");
         document.getElementById(`grupo__${campo}`).classList.add("formulario__grupo-correcto");
         document.getElementById(`#grupo__${campo} i`).classList.remove("fa-times-circle");
-        document.getElementById(`#grupo__${campo} i`).classList.add("fa-check-circle");
-        document.getElementById(`#grupo__${campo} .formulario__input-error`).classList.remove("formulario__input-error-activo");
+        document.getElementById(`#grupo__${campo} i`).classList.add("fa-regular fa-check");
+        document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.remove("formulario__input-error-activo");
         campos[campo] = true;
     } else {
         document.getElementById(`grupo__${campo}`).classList.add("formulario__grupo-incorrecto");
         document.getElementById(`grupo__${campo}`).classList.remove("formulario__grupo-correcto");
         document.getElementById(`#grupo__${campo} i`).classList.add("fa-times-circle");
-        document.getElementById(`#grupo__${campo} i`).classList.remove("fa-check-circle");
-        document.getElementById(`#grupo__${campo} .formulario__input-error`).classList.add("formulario__input-error-activo");
+        document.getElementById(`#grupo__${campo} i`).classList.remove("fa-regular fa-check");
+        document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.add("formulario__input-error-activo");
         campos[campo] = false;
     }
 }
@@ -67,14 +67,14 @@ const validarPassword2 = () => {
         document.getElementById(`grupo__password2`).classList.add("formulario__grupo-incorrecto");
         document.getElementById(`grupo__password2`).classList.remove("formulario__grupo-correcto");
         document.getElementById(`#grupo__password2 i`).classList.add("fa-times-circle");
-        document.getElementById(`#grupo__password2 i`).classList.remove("fa-check-circle");
+        document.getElementById(`#grupo__password2 i`).classList.remove("fa-regular fa-check");
         document.getElementById(`#grupo__password2 .formulario__input-error`).classList.add("formulario__input-error-activo");
         campos[password] = false;
     } else {
         document.getElementById(`grupo__password2`).classList.remove("formulario__grupo-incorrecto");
         document.getElementById(`grupo__password2`).classList.add("formulario__grupo-correcto");
         document.getElementById(`#grupo__password2 i`).classList.remove("fa-times-circle");
-        document.getElementById(`#grupo__password2 i`).classList.add("fa-check-circle");
+        document.getElementById(`#grupo__password2 i`).classList.add("fa-regular fa-check");
         document.getElementById(`#grupo__password2 .formulario__input-error`).classList.remove("formulario__input-error-activo");
         campos[password] = true;
     }
@@ -108,4 +108,6 @@ $formulario.addEventListener("submit", e => {
         document.getElementById("formulario__mensaje").classList.add("formulario__mensaje-activo");
     }
 });
+
+// falta corregir errores , depurarlo
 
