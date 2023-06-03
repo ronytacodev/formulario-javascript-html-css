@@ -3,9 +3,9 @@ const $inputs = document.querySelectorAll("#formulario input");
 
 const expresiones = {
     usuario : /^[a-zA-Z0-9\_\-]{4,16}$/, //Aqui le estamos diciendo que en el campo usuario acepte letras minúsculas
-    nombre:  /^[a-zA-ZÁ-ÿ\s]{1,40}$/, //Aqui aceptara letras con o sin acento y espacios
+    nombre:  /^[a-zA-ZÀ-ÿ\s]{1,40}$/, //Aqui aceptara letras con o sin acento y espacios
     password : /^.{4,12}$/, //Solo aceptara un mínimo de 4 dígitos y un máximo de 12 dígitos
-    correo : /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9_.]+$/, //Acepta de todo menos caracteres especiales
+    correo : /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/, //Acepta de todo menos caracteres especiales
     telefono : /^\d{9}$/ //Aceptara solo 9 números por ser de Perú 01 311 1111
 }
 
@@ -47,40 +47,39 @@ const validarCampo = (expresiones, input, campo) => {
         document.getElementById(`grupo__${campo}`).classList.add("formulario__grupo-correcto");
         document.getElementById(`#grupo__${campo} i`).classList.remove("bi bi-x-circle-fill");
         document.getElementById(`#grupo__${campo} i`).classList.add("bi bi-check-circle-fill");
-        document.querySelector(`#grupo__${campo} p`).classList.remove("formulario__input-error-activo");
-        document.querySelector(`#grupo__${campo} p`).classList.add("formulario__input-error-oculto");
+        document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.remove("formulario__input-error-activo");
         campos[campo] = true;
     } else { //si no se llenó correctamente los campos del form
         document.getElementById(`grupo__${campo}`).classList.add("formulario__grupo-incorrecto");
         document.getElementById(`grupo__${campo}`).classList.remove("formulario__grupo-correcto");
         document.getElementById(`#grupo__${campo} i`).classList.add("bi bi-x-circle-fill");
         document.getElementById(`#grupo__${campo} i`).classList.remove("bi bi-check-circle-fill");
-        document.querySelector(`#grupo__${campo} p`).classList.remove("formulario__input-error-oculto");
-        document.querySelector(`#grupo__${campo} p`).classList.add("formulario__input-error-activo");
+        document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.add("formulario__input-error-activo");
         campos[campo] = false;
     }
 }
 
-// const validarPassword2 = () => {
-//     let inputPassword1 = document.getElementById("password");
-//     let inputPassword2 = document.getElementById("password2");
+const validarPassword2 = () => {
+    let inputPassword1 = document.getElementById("password");
+    let inputPassword2 = document.getElementById("password2");
 
-//     if (inputPassword1.value !== inputPassword2.value) {
-//         document.getElementById(`grupo__password2`).classList.add("formulario__grupo-incorrecto");
-//         document.getElementById(`grupo__password2`).classList.remove("formulario__grupo-correcto");
-//         document.getElementById(`#grupo__password2 i`).classList.add("bi bi-x-circle-fill");
-//         document.getElementById(`#grupo__password2 i`).classList.remove("bi bi-check-circle-fill");
-//         document.getElementById(`#grupo__password2 .formulario__input-error-oculto`).classList.add("formulario__input-error-activo");
-//         campos[password] = false;
-//     } else {
-//         document.getElementById(`grupo__password2`).classList.remove("formulario__grupo-incorrecto");
-//         document.getElementById(`grupo__password2`).classList.add("formulario__grupo-correcto");
-//         document.getElementById(`#grupo__password2 i`).classList.remove("fbi bi-x-circle-fill");
-//         document.getElementById(`#grupo__password2 i`).classList.add("bi bi-check-circle-fill");
-//         document.getElementById(`#grupo__password2 .formulario__input-error-oculto`).classList.remove("formulario__input-error-activo");
-//         campos[password] = true;
-//     }
-// }
+    if (inputPassword1.value !== inputPassword2.value) {
+        document.getElementById(`grupo__password2`).classList.add("formulario__grupo-incorrecto");
+        document.getElementById(`grupo__password2`).classList.remove("formulario__grupo-correcto");
+        document.getElementById(`#grupo__password2 i`).classList.add("fbi bi-x-circle-fill");
+        document.getElementById(`#grupo__password2 i`).classList.remove("bi bi-check-circle-fill");
+        document.getElementById(`#grupo__password2 .formulario__input-error`).classList.add("formulario__input-error-activo");
+        campos[password] = false;
+    } else {
+        document.getElementById(`grupo__password2`).classList.remove("formulario__grupo-incorrecto");
+        document.getElementById(`grupo__password2`).classList.add("formulario__grupo-correcto");
+        document.getElementById(`#grupo__password2 i`).classList.remove("bi bi-x-circle-fill");
+        document.getElementById(`#grupo__password2 i`).classList.add("bi bi-check-circle-fill");
+        document.getElementById(`#grupo__password2 .formulario__input-error`).classList.remove
+        ("formulario__input-error-activo");
+        campos[password] = true;
+    }
+}
 
 $inputs.forEach((input) => {
     input.addEventListener("keyup", validarFormulario);
@@ -90,8 +89,10 @@ $inputs.forEach((input) => {
 $formulario.addEventListener("submit", e => {
     e.preventDefault();
 
-    const $terminos = document.getElementById("terminos");
-    if (campos.usuario && campos.nombre && campos.password && campos.correo && campos.telefono && $terminos.checked) {
+    const terminos = document.getElementById("terminos");
+    if (campos.usuario && campos.nombre && campos.password && campos.correo && campos.telefono && terminos.checked) {
+        formulario.reset();
+
         document.getElementById("formulario__mensaje-exito").classList.add("formulario__mensaje-exito-activo");
 
         setTimeout(() => {
@@ -104,7 +105,7 @@ $formulario.addEventListener("submit", e => {
         });
 
         setTimeout(() => {
-            location.reload();
+            Location.reload();
         }, 3000);
     } else {
         document.getElementById("formulario__mensaje").classList.add("formulario__mensaje-activo");
