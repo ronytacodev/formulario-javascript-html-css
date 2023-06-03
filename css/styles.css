@@ -18,7 +18,7 @@ main {
     padding: 10px 40px;
     border: 2px solid #035F22;
     border-radius: 10px;
-    box-shadow: 0 2px 10px #035F22;
+    box-shadow: 0 2px 10px #035F22, 2px 10px #035F22;
 }
 
 /*---------------- ESTILOS FORMULARIO-------------------- */
@@ -64,8 +64,13 @@ main {
 }
 
 .formulario__input-error {
+    font-size: 12px;
     margin-bottom: 0;
     display: none;
+}
+
+.formulario__input-error-activo {
+    display: block;
 }
 
 .formulario__span {
@@ -98,9 +103,7 @@ main {
     border-radius: 10px;
 }
 
-.formulario__mensaje-activo,
-.formulario__mensaje-exito-activo,
-.formulario__input-error-activo {
+.formulario__mensaje-activo {
     display: block;
 }
 
@@ -121,15 +124,19 @@ main {
 
 .formulario__btn:hover {
     background: #035f22;
-    transition: background 1s;
+    transition: 1s;
 }
 
 .formulario__mensaje-exito {
     display: none;
-    font-style: 2em;
+    font-size: 2em;
     color: #035F22;
     padding: 10px 0;
     text-align: center;
+}
+
+.formulario__mensaje-exito-activo {
+    display: block;
 }
 
 /*---------------- ESTILOS VALIDACIONES-------------------- */
